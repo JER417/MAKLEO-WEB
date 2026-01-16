@@ -1,5 +1,5 @@
 "use client"
-
+import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 
@@ -23,8 +23,14 @@ export function Header() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="text-3xl font-bold tracking-tight" style={{ color: "#115796" }}>
-              MAKLEO
+            <div>
+              <Image
+              src="/logo-completo.png"
+              alt="MAKLEO"
+              width={250}
+              height={150}
+              priority
+            />
             </div>
           </div>
 
