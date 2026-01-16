@@ -24,9 +24,9 @@ export function HeroSection() {
 
           {/* Main heading */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-balance leading-[1.1]">
-            <span style={{ color: "#115796" }}>MAKLEO</span>
-            <br />
             <span className="text-foreground">Óptica Industrial y Distribuidora</span>
+            <br />
+            <span style={{ color: "#115796" }}>MAKLEO</span>
           </h1>
 
           {/* Subtitle */}
@@ -51,7 +51,7 @@ export function HeroSection() {
               style={{ borderColor: "#09C2AF", color: "#09C2AF" }}
               asChild
             >
-              <a href="#b2b">Compras por Volumen</a>
+              <a href="#b2b">Hacer Cotización</a>
             </Button>
           </div>
 
@@ -65,9 +65,9 @@ export function HeroSection() {
             </div>
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold" style={{ color: "#09C2AF" }}>
-                500+
+                3.000+
               </div>
-              <div className="text-sm text-muted-foreground">Empresas confían en nosotros</div>
+              <div className="text-sm text-muted-foreground">Clientes que confían en nosotros</div>
             </div>
             <div className="space-y-2">
               <div className="text-4xl md:text-5xl font-bold" style={{ color: "#1EEAF9" }}>

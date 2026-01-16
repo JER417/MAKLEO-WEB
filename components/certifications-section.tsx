@@ -69,8 +69,8 @@ export function CertificationsSection() {
           style={{ borderColor: "#1EEAF9" }}
         >
           <div className="text-center space-y-3">
-            <p className="text-lg font-medium text-foreground">¿Necesitas documentación específica de certificación?</p>
-            <p className="text-muted-foreground">Podemos proporcionar certificados de cumplimiento para tu empresa</p>
+            <p className="text-lg font-medium text-foreground">¿Necesitas asesoria personal?</p>
+            <p className="text-muted-foreground">Podemos proporcionar asesoría para tu empresa</p>
           </div>
         </div>
       </div>

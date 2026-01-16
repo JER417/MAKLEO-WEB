@@ -18,7 +18,7 @@ export function DifferentiatorBanner() {
             Único en México
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white text-balance leading-tight">
-            La única distribuidora especializada en óptica industrial del país
+            La primer Óptica Industrial y Distribuidora en México
           </h2>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto text-pretty leading-relaxed">
             Experiencia exclusiva, catálogo especializado y asesoría técnica profesional que no encontrarás en ningún

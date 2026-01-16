@@ -29,12 +29,12 @@ export function B2BSection() {
     {
       icon: Package,
       title: "Esquemas Preferenciales",
-      description: "Precios especiales y esquemas de pago adaptados para empresas y corporativos",
+      description: "PRECIOS PREFERENCIALES y esquemas de pago adaptados para empresas y corporativos",
     },
     {
       icon: Users,
       title: "Servicios Especializados",
-      description: "Examen de la vista, lentes de contacto y control de ambliopía para tu equipo",
+      description: "Examen de la vista, lentes de contacto y control de ambliopía para tu personal",
     },
     {
       icon: TrendingUp,
@@ -44,7 +44,7 @@ export function B2BSection() {
     {
       icon: Building2,
       title: "Solución Profesional",
-      description: "La mejor solución a cada problema visual desde un punto de vista profesional",
+      description: "La mejor solución a cada problema visual desde un punto de vista profesional con calidez humana",
     },
   ]
 
@@ -63,7 +63,7 @@ export function B2BSection() {
               Servicios Especializados para Empresas y Corporativos
             </h2>
             <p className="text-lg text-muted-foreground text-pretty leading-relaxed max-w-2xl mx-auto">
-              Contamos con esquemas de precios preferenciales y servicios especializados para tu empresa
+              Contamos con esquemas de PRECIOS PREFERENCIALES y servicios especializados para tu empresa
             </p>
           </div>
 
@@ -95,9 +95,9 @@ export function B2BSection() {
                   <CardTitle className="text-lg">Empresas que Confían en Nosotros</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">Más de 500 empresas en sectores como:</p>
+                  <p className="text-sm text-muted-foreground mb-4">Más de 50 empresas en sectores como:</p>
                   <div className="flex flex-wrap gap-2">
-                    {["Manufactura", "Construcción", "Minería", "Petroquímica", "Automotriz", "Energía"].map(
+                    {["Metal Mecanica", "Refresqueras", "Aliemnticias", "Comunicación", "Industrial"].map(
                       (sector) => (
                         <span
                           key={sector}
@@ -167,7 +167,7 @@ export function B2BSection() {
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">Volumen Estimado *</label>
                     <Input
-                      placeholder="Ej: 100-500 unidades mensuales"
+                      placeholder="Ej: 100 - 10,000"
                       value={formData.volume}
                       onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
                       required

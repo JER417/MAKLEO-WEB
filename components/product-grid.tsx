@@ -18,10 +18,10 @@ interface Product {
 const products: Product[] = [
   {
     id: "1",
-    name: "Guardian Pro X1",
-    description: "Protección de alto impacto con lente polarizado",
-    image: "/industrial-safety-glasses-front-view.jpg",
-    imageHover: "/industrial-safety-glasses-side-angle.jpg",
+    name: "EMER-7910 (Humo)",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "EMER-7910 CLARO A.jpg",
+    imageHover: "EMER-7910 CLARO B.jpg",
     detailedDescription:
       "Diseñados para ambientes de alta exigencia, los Guardian Pro X1 ofrecen protección superior contra impactos de alta velocidad y partículas voladoras.",
     features: [
@@ -34,10 +34,10 @@ const products: Product[] = [
   },
   {
     id: "2",
-    name: "Shield Vision Elite",
-    description: "Lente panorámico con protección lateral",
-    image: "/wraparound-safety-goggles-front.jpg",
-    imageHover: "/wraparound-safety-goggles-angle.jpg",
+    name: "EMER-7910 (Negro)",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "EMER-7910 NEGRO A.jpg",
+    imageHover: "EMER-7910 NEGRO B.jpg",
     detailedDescription:
       "Visión panorámica sin comprometer la seguridad. Ideal para trabajo en construcción y ambientes exteriores.",
     features: [
@@ -50,10 +50,10 @@ const products: Product[] = [
   },
   {
     id: "3",
-    name: "Clear Focus Pro",
-    description: "Máxima claridad óptica para precisión",
-    image: "/clear-safety-glasses-precision-work.jpg",
-    imageHover: "/clear-safety-glasses-detail-view.jpg",
+    name: "CONA-972",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "MOD. CONA-9712 A.jpg",
+    imageHover: "MOD. CONA-9712 B.png",
     detailedDescription:
       "Perfectos para trabajos de precisión que requieren claridad visual excepcional sin distorsión.",
     features: [
@@ -66,10 +66,10 @@ const products: Product[] = [
   },
   {
     id: "4",
-    name: "Titan Shield",
-    description: "Resistencia extrema para trabajos pesados",
-    image: "/heavy-duty-safety-goggles-front.jpg",
-    imageHover: "/heavy-duty-safety-goggles-side.jpg",
+    name: "MK-C-M2005 (Azul)",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "MOD.MK-C-M2005.jpg",
+    imageHover: "MOD.MK-C-M2005.jpg",
     detailedDescription: "Construidos para soportar las condiciones más extremas en ambientes industriales pesados.",
     features: [
       "Marco de nylon de alta resistencia",
@@ -81,37 +81,37 @@ const products: Product[] = [
   },
   {
     id: "5",
-    name: "AeroLight Series",
-    description: "Ultra ligeros con máximo confort",
-    image: "/lightweight-safety-glasses-modern.jpg",
-    imageHover: "/lightweight-safety-glasses-comfortable.jpg",
+    name: "CM-1963",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "unnamed A.jpg",
+    imageHover: "unnamed B.jpg",
+    detailedDescription:
+      "Protección industrial sin sacrificar tu prescripción visual. Estilo profesional con seguridad certificada.",
+    features: [
+      "Compatible con lentes graduados",
+      "Marco ajustable universal",
+      "Protección lateral integrada",
+      "Diseño profesional y elegante",
+    ],
+    certifications: ["ANSI Z87.1", "EN166"],
+  },
+  {
+    id: "6",
+    name: "MK-C-M2005 (Naranja)",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "MOD. MK-C-M2005 Naranja A.jpg",
+    imageHover: "MOD. MK-C-M2005 Naranja A.jpg",
     detailedDescription:
       "La combinación perfecta entre protección profesional y comodidad extrema para jornadas laborales extendidas.",
     features: ["Solo 23 gramos de peso", "Patillas flex ajustables", "Ventilación superior", "Diseño ergonómico"],
     certifications: ["ANSI Z87.1", "CSA Z94.3"],
   },
   {
-    id: "6",
-    name: "ChromaTech Polarized",
-    description: "Tecnología de lente polarizado avanzada",
-    image: "/polarized-safety-sunglasses-professional.jpg",
-    imageHover: "/polarized-safety-sunglasses-detail.jpg",
-    detailedDescription:
-      "Elimina el deslumbramiento mientras mantiene los más altos estándares de protección industrial.",
-    features: [
-      "Filtro polarizado de 99.9%",
-      "Reducción de fatiga ocular",
-      "Protección contra rayos UV",
-      "Lentes con recubrimiento hidrofóbico",
-    ],
-    certifications: ["ANSI Z87.1", "AS/NZS 1337"],
-  },
-  {
     id: "7",
-    name: "NightVision Industrial",
-    description: "Optimizados para ambientes de baja luz",
-    image: "/yellow-tinted-safety-glasses.jpg",
-    imageHover: "/yellow-tinted-safety-glasses-side.jpg",
+    name: "Google STELO",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "Google STELO A.jpg",
+    imageHover: "Google STELO B.jpg",
     detailedDescription:
       "Mejora el contraste y la visibilidad en condiciones de iluminación reducida sin comprometer la seguridad.",
     features: [
@@ -124,10 +124,10 @@ const products: Product[] = [
   },
   {
     id: "8",
-    name: "WeldGuard Pro",
-    description: "Protección especializada para soldadura",
-    image: "/welding-safety-goggles-dark.jpg",
-    imageHover: "/placeholder.svg?height=400&width=400",
+    name: "Google UL",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "Google UL A.jpg",
+    imageHover: "Google UL B.jpg",
     detailedDescription:
       "Diseñados específicamente para proteger contra chispas, radiación y calor extremo durante trabajos de soldadura.",
     features: [
@@ -140,26 +140,26 @@ const products: Product[] = [
   },
   {
     id: "9",
-    name: "ClearView RX",
-    description: "Compatible con prescripción graduada",
-    image: "/placeholder.svg?height=400&width=400",
-    imageHover: "/placeholder.svg?height=400&width=400",
+    name: "Google Antiempañante 3M",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "Google antiempañante 3M A.jpg",
+    imageHover: "Google antiempañante 3M B.jpg",
     detailedDescription:
-      "Protección industrial sin sacrificar tu prescripción visual. Estilo profesional con seguridad certificada.",
+      "Elimina el deslumbramiento mientras mantiene los más altos estándares de protección industrial.",
     features: [
-      "Compatible con lentes graduados",
-      "Marco ajustable universal",
-      "Protección lateral integrada",
-      "Diseño profesional y elegante",
+      "Filtro polarizado de 99.9%",
+      "Reducción de fatiga ocular",
+      "Protección contra rayos UV",
+      "Lentes con recubrimiento hidrofóbico",
     ],
-    certifications: ["ANSI Z87.1", "EN166"],
+    certifications: ["ANSI Z87.1", "AS/NZS 1337"],
   },
   {
     id: "10",
-    name: "SplashGuard Chemical",
-    description: "Resistencia a salpicaduras químicas",
-    image: "/placeholder.svg?height=400&width=400",
-    imageHover: "/placeholder.svg?height=400&width=400",
+    name: "MK-021CL",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "MOD.MK-021CL A.jpg",
+    imageHover: "MOD.MK-021CL B.jpg",
     detailedDescription:
       "Máxima protección contra salpicaduras de químicos y sustancias peligrosas con sellado hermético total.",
     features: [
@@ -172,10 +172,10 @@ const products: Product[] = [
   },
   {
     id: "11",
-    name: "ExecutiveLine Pro",
-    description: "Estilo profesional con protección certificada",
-    image: "/placeholder.svg?height=400&width=400",
-    imageHover: "/placeholder.svg?height=400&width=400",
+    name: "Visitante",
+    description: "Proteccion lateral y apto para actividades de alta exigencia",
+    image: "MOD.VISITANTE A.jpg",
+    imageHover: "MOD.VISITANTE B.jpg",
     detailedDescription:
       "Perfectos para profesionales que necesitan protección sin comprometer el estilo en ambientes corporativos industriales.",
     features: [

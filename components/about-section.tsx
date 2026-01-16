@@ -63,7 +63,7 @@ export function AboutSection() {
                   Un entorno seguro comienza con la protección adecuada
                 </p>
                 <p className="text-muted-foreground max-w-2xl">
-                  En MAKLEO & ALYZER'S distribuimos lentes de seguridad industrial confiables, resistentes y
+                  En MAKLEO contamos con lentes de seguridad industrial certificados para graduar confiables, resistentes y
                   certificados, ideales para prevenir accidentes y cumplir con las normas de seguridad.
                 </p>
               </CardContent>
