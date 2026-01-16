@@ -72,7 +72,7 @@ export function Footer() {
               <li>San Nicolás de los Garza, N.L.</li>
               <li>
                 <a href="mailto:josergiocdna@gmail.com" className="hover:text-white transition-colors">
-                  contacto@makleo.com
+                  contacto@makleo.com.mx
                 </a>
               </li>
               <li>
