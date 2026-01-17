@@ -78,6 +78,58 @@ export const products: Product[] = [
     ],
     certifications: ["ANSI Z87.1-2003", "CSA Z94.3"],
   },
+    {
+    id: "5",
+    name: "CM-1963",
+    description: "Lentes de seguridad cómodos y resistentes para uso industrial general.",
+    image: "/unnamed A.jpg",
+    imageHover: "/unnamed B.jpg",
+    detailedDescription:
+      "Lentes de seguridad diseñados para brindar protección confiable en entornos industriales y de trabajo diario. Su estructura ligera y resistente permite usarlos durante jornadas prolongadas manteniendo comodidad y buena cobertura lateral.",
+    features: [
+      "Lente de policarbonato resistente",
+      "Protección UV",
+      "Diseño ligero para uso prolongado",
+      "Protección lateral integrada",
+      "Estructura durable para trabajo industrial",
+    ],
+    certifications: ["ANSI Z87.1"],
+  },
+  {
+    id: "6",
+    name: "MK-C-M2005 (Naranja)",
+    description: "Alta visibilidad con diseño envolvente y protección lateral.",
+    image: "/MOD. MK-C-M2005 Naranja A.jpg",
+    imageHover: "/MOD. MK-C-M2005 Naranja A.jpg",
+    detailedDescription:
+      "Versión de alta visibilidad del modelo MK-C-M2005. Diseñado para entornos industriales donde se requiere protección ocular y rápida identificación del equipo de seguridad. Mantiene diseño envolvente, buena cobertura lateral y comodidad para uso prolongado.",
+    features: [
+      "Color naranja de alta visibilidad",
+      "Diseño envolvente",
+      "Protección lateral",
+      "Material resistente a impactos",
+      "Cómodos para uso prolongado",
+    ],
+    certifications: ["ANSI Z87.1"],
+  },
+  {
+    id: "7",
+    name: "Goggle STELO",
+    description: "Goggle con sellado completo, ideal para polvo, partículas y químicos.",
+    image: "/Google STELO A.jpg",
+    imageHover: "/Google STELO B.jpg",
+    detailedDescription:
+      "Goggle de seguridad tipo sellado total para trabajos donde se requiere máxima protección ocular. Recomendado para ambientes con polvo, partículas finas o riesgo de salpicaduras. Diseño cómodo con ajuste seguro mediante banda elástica.",
+    features: [
+      "Sellado facial completo",
+      "Protección contra polvo y partículas",
+      "Diseño anti-salpicaduras",
+      "Banda elástica ajustable",
+      "Lente de policarbonato resistente",
+    ],
+    certifications: ["ANSI Z87.1"],
+  },
+
   {
     id: "8",
     name: "Goggle Safety",
