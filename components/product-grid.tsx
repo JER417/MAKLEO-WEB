@@ -29,6 +29,7 @@ const products: Product[] = [
       "Protección UV 400",
       "Ajuste ergonómico con almohadillas",
       "Resistencia a impactos de alta velocidad",
+      "Lentes de policarbonato de alta resistencia",
     ],
     certifications: ["ANSI Z87.1+", "CSA Z94.3"],
   },

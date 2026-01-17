@@ -22,16 +22,17 @@ export function Header() {
     >
       <div className="container mx-auto px-2 py-2">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div>
+          <div className="flex items-center gap-3">
               <Image
-              src="/logo-completo.png"
+              src="/favicon.ico"
               alt="MAKLEO"
-              width={250}
-              height={150}
+              width={80}
+              height={80}
               priority
             />
-            </div>
+            <h1 className="text-2xl font-bold tracking-tight" style={{ color: "#115796" }}>
+              MAKLEO
+            </h1>
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
