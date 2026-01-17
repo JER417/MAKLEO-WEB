@@ -1,3 +1,4 @@
+import React from "react"
 import { Shield } from "lucide-react"
 
 export function Footer() {
@@ -85,7 +86,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
-          <p>© 2026 MAKLEO. Lic. J. Sergio Cadena C. Todos los derechos reservados.</p>
+          <p>© 2026 MAKLEO. Todos los derechos reservados.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">
               Términos y Condiciones
