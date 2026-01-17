@@ -1,5 +1,5 @@
 "use client"
-
+import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 
@@ -20,14 +20,20 @@ export function Header() {
         isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-2 py-2">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="text-3xl font-bold tracking-tight" style={{ color: "#115796" }}>
+          <div className="flex items-center gap-3">
+              <Image
+              src="/favicon.ico"
+              alt="MAKLEO"
+              width={80}
+              height={80}
+              priority
+            />
+            <h1 className="text-2xl font-bold tracking-tight" style={{ color: "#115796" }}>
               MAKLEO
-            </div>
+            </h1>
           </div>
-
           <nav className="hidden md:flex items-center gap-8">
             <a
               href="#productos"
