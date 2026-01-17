@@ -7,10 +7,10 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
-  title: "MAKLEO - Óptica Industrial Especializada en México",
+  title: "Optica Industrial y Distribuidora MAKLEO",
   description:
-    "La única distribución óptica industrial especializada en México. Protección profesional certificada para la industria.",
-  keywords: "óptica industrial, seguridad industrial, lentes de protección, ANSI Z87.1, México, MAKLEO",
+    "La primera y unica Optica Industrial y Distribuidora en Mexico. Especializados en lentes de proteccion industrial certificados.",
+  keywords: "óptica industrial, distribuidora,distribuidora optica industrial,seguridad industrial, lentes de protección, México, MAKLEO",
   generator: "v0.app",
   icons: {
     icon: "/favicon.ico",
