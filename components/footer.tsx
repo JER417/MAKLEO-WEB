@@ -78,7 +78,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="tel:+528114965709" className="hover:text-white transition-colors">
-                  811 496 5709
+                  8113780983
                 </a>
               </li>
             </ul>

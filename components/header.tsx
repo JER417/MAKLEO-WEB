@@ -49,7 +49,7 @@ export function Header() {
           </nav>
 
           <Button asChild className="text-white" style={{ backgroundColor: "#115796" }}>
-            <a href="https://wa.me/525512345678" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/528113780983" target="_blank" rel="noopener noreferrer">
               Contactar
             </a>
           </Button>

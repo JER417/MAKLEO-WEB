@@ -42,13 +42,13 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                 className="w-10 h-10 rounded-lg flex items-center justify-center"
                 style={{ backgroundColor: "#115796" }}
               >
-                <span className="text-white font-bold text-lg">M</span>
+                
               </div>
               <span className="text-xl font-bold text-foreground tracking-tight">MAKLEO</span>
             </Link>
 
             <Button className="text-white font-semibold hidden md:flex" style={{ backgroundColor: "#09C2AF" }} asChild>
-              <a href={`https://wa.me/528114965709?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
+              <a href={`https://wa.me/528113780983?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Cotizar
               </a>
@@ -203,7 +203,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                 asChild
               >
                 <a
-                  href={`https://wa.me/528114965709?text=${whatsappMessage}`}
+                  href={`https://wa.me/528113780983?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -264,7 +264,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
           style={{ backgroundColor: "#09C2AF" }}
           asChild
         >
-          <a href={`https://wa.me/528114965709?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
+          <a href={`https://wa.me/528113780983?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
             <MessageCircle className="w-5 h-5 mr-2" />
             Cotizar vía WhatsApp
           </a>
