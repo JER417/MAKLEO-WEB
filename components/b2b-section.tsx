@@ -1,15 +1,18 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import emailjs from "@emailjs/browser"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Building2, Users, Package, TrendingUp } from "lucide-react"
+import { Building2, Users, Package, TrendingUp, CheckCircle2, Loader2 } from "lucide-react"
 
 export function B2BSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  
   const [formData, setFormData] = useState({
     companyName: "",
     contactName: "",
@@ -21,8 +24,36 @@ export function B2BSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí iría la lógica de envío del formulario
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+
+    // CREDENCIALES ACTUALIZADAS SEGÚN TUS CAPTURAS
+    const SERVICE_ID = "service_svjwsvt"    // ID de tu conexión Gmail
+    const TEMPLATE_ID = "template_holmh6z"   // ID de tu plantilla "Contact Us"
+    const PUBLIC_KEY = "5BJ3yondvWYjfn_HS"   // Tu Public Key de Account
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
+      .then(() => {
+        setIsSubmitting(false)
+        setIsSubmitted(true)
+        
+        // Limpiar formulario tras éxito
+        setFormData({
+          companyName: "",
+          contactName: "",
+          email: "",
+          phone: "",
+          volume: "",
+          message: "",
+        })
+
+        // El mensaje de éxito desaparece tras 5 segundos
+        setTimeout(() => setIsSubmitted(false), 5000)
+      })
+      .catch((error) => {
+        setIsSubmitting(false)
+        console.error("Error al enviar:", error)
+        alert("Ocurrió un error al enviar la solicitud. Por favor intenta de nuevo.")
+      })
   }
 
   const benefits = [
@@ -68,7 +99,7 @@ export function B2BSection() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Benefits */}
+            {/* Benefits Column */}
             <div className="space-y-6">
               <h3 className="text-2xl font-semibold text-foreground mb-8">Beneficios Exclusivos</h3>
 
@@ -97,7 +128,7 @@ export function B2BSection() {
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">Más de 50 empresas en sectores como:</p>
                   <div className="flex flex-wrap gap-2">
-                    {["Metal Mecanica", "Refresqueras", "Aliemnticias", "Comunicación", "Industrial"].map(
+                    {["Metal Mecanica", "Refresqueras", "Alimenticias", "Comunicación", "Industrial"].map(
                       (sector) => (
                         <span
                           key={sector}
@@ -112,7 +143,7 @@ export function B2BSection() {
               </Card>
             </div>
 
-            {/* Contact Form */}
+            {/* Form Column */}
             <Card className="border-0 shadow-xl">
               <CardHeader>
                 <CardTitle className="text-2xl">Solicita una Cotización</CardTitle>
@@ -184,14 +215,32 @@ export function B2BSection() {
                     />
                   </div>
 
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full text-white font-semibold"
-                    style={{ backgroundColor: "#115796" }}
-                  >
-                    Enviar Solicitud
-                  </Button>
+                  <div className="space-y-4 pt-2">
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full text-white font-semibold transition-all"
+                      style={{ backgroundColor: "#115796" }}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Enviando...
+                        </>
+                      ) : (
+                        "Enviar Solicitud"
+                      )}
+                    </Button>
+
+                    {/* Mensaje de éxito verde discreto */}
+                    {isSubmitted && (
+                      <div className="flex items-center justify-center gap-2 text-emerald-600 animate-in fade-in duration-300">
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span className="text-sm font-bold text-center">Cotización enviada con éxito</span>
+                      </div>
+                    )}
+                  </div>
 
                   <p className="text-xs text-muted-foreground text-center">
                     Al enviar este formulario aceptas nuestra política de privacidad
