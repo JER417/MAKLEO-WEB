@@ -19,7 +19,7 @@ export function HeroSection() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border">
             <Shield className="w-4 h-4" style={{ color: "#09C2AF" }} />
-            <span className="text-sm font-medium text-muted-foreground">Certificación ANSI Z87.1</span>
+            <span className="text-sm font-medium text-muted-foreground">Certificados</span>
           </div>
 
           {/* Main heading */}
