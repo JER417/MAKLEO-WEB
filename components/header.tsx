@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -22,11 +23,12 @@ export function Header() {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-3">
+            <Image src="makleologo.png" alt="MAKLEO Logo" width={40} height={40} className="rounded-sm" />
             <div className="text-3xl font-bold tracking-tight" style={{ color: "#115796" }}>
               MAKLEO
             </div>
-          </div>
+          </a>
 
           <nav className="hidden md:flex items-center gap-8">
             <a
