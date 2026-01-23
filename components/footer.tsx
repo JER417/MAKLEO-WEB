@@ -6,16 +6,21 @@ export function Footer() {
     <footer className="py-16 border-t border-border" style={{ backgroundColor: "#334052" }}>
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Shield className="w-8 h-8" style={{ color: "#09C2AF" }} />
-              <span className="text-2xl font-bold text-white">MAKLEO</span>
+        {/* Brand */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <img
+                  src="/favicon.ico"
+                  alt="MAKLEO"
+                  className="w-8 h-8"
+                  style={{ color: "white" }}
+                />
+                <span className="text-2xl font-bold text-white">MAKLEO</span>
+              </div>
+              <p className="text-sm text-white/70 leading-relaxed">
+                Óptica Industrial y Distribuidora. <strong><em>El mejor trato, la mejor propuesta.</em></strong>
+              </p>
             </div>
-            <p className="text-sm text-white/70 leading-relaxed">
-              Óptica Industrial y Distribuidora. El mejor trato, la mejor propuesta.
-            </p>
-          </div>
 
           {/* Products */}
           <div>

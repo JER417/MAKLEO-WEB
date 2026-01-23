@@ -31,7 +31,7 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            El mejor trato, la mejor propuesta. Confiables y seguros: lentes de seguridad industrial certificados para
+            <strong><em>El mejor trato, la mejor propuesta.</em></strong> Confiables y seguros: lentes de seguridad industrial certificados para
             prevenir accidentes.
           </p>
 
