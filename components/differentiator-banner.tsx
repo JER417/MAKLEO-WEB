@@ -15,7 +15,7 @@ export function DifferentiatorBanner() {
             className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-2"
             style={{ backgroundColor: "#09C2AF", color: "#FFFFFF" }}
           >
-            Único en México
+            Única en México
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white text-balance leading-tight">
             La primer Óptica Industrial y Distribuidora en México
