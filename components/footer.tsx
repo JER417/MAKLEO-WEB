@@ -72,7 +72,7 @@ export function Footer() {
               <li>Col. Misión de Casa Blanca</li>
               <li>San Nicolás de los Garza, N.L.</li>
               <li>
-                <a href="mailto:josergiocdna@gmail.com" className="hover:text-white transition-colors">
+                <a href="mailto:contacto@makleo.com.mx" className="hover:text-white transition-colors">
                   contacto@makleo.com.mx
                 </a>
               </li>
