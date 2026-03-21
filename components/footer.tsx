@@ -1,102 +1,86 @@
-import React from "react"
-import { Shield } from "lucide-react"
+"use client"
+
+import Image from "next/image"
+import { Mail, Phone, MapPin, MessageCircle } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="py-16 border-t border-border" style={{ backgroundColor: "#334052" }}>
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
+    <footer style={{ background: "#1b2738", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <div className="container mx-auto px-6 py-16">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Shield className="w-8 h-8" style={{ color: "#09C2AF" }} />
-              <span className="text-2xl font-bold text-white">MAKLEO</span>
+            <div className="flex items-center gap-3">
+              <Image src="/makleologo.png" alt="MAKLEO" width={36} height={36} className="rounded-lg" />
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "22px", color: "#FFFFFF", letterSpacing: "-0.02em" }}>MAKLEO</span>
             </div>
-            <p className="text-sm text-white/70 leading-relaxed">
-              Óptica Industrial y Distribuidora. El mejor trato, la mejor propuesta.
+            <p style={{ fontSize: "13px", color: "#6b849c", lineHeight: 1.7 }}>
+              La primera Óptica Industrial y Distribuidora en México. Certificados ANSI/ISEA Z87.1-2020 y NOM-017-STPS-2024.
             </p>
+            <a href="https://wa.me/528113780983" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
+              style={{ background: "#25D366", color: "#fff" }}>
+              <MessageCircle className="w-4 h-4" /> WhatsApp
+            </a>
           </div>
 
-          {/* Products */}
           <div>
-            <h4 className="font-semibold text-white mb-4">Productos</h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li>
-                <a href="#productos" className="hover:text-white transition-colors">
-                  Lentes de Seguridad Industrial
-                </a>
-              </li>
-              <li>
-                <a href="#productos" className="hover:text-white transition-colors">
-                  Goggles de Protección
-                </a>
-              </li>
-              <li>
-                <a href="#productos" className="hover:text-white transition-colors">
-                  Lentes de Prescripción
-                </a>
-              </li>
+            <h4 style={{ fontSize: "11px", fontWeight: 700, color: "#a0b4c8", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "16px" }}>Productos</h4>
+            <ul className="space-y-2.5">
+              {[["/#productos","Lentes de Seguridad"],["/#productos","Goggles Industriales"],["/#productos","Lentes Graduados"],["/#nom017","Asesoría NOM-017"]].map(([href, label]) => (
+                <li key={label}>
+                  <a href={href} style={{ fontSize: "13px", color: "#6b849c", textDecoration: "none" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#09C2AF")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#6b849c")}>{label}</a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-white mb-4">Servicios</h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Examen de la Vista
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Lentes de Contacto
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Control de Ambliopía
-                </a>
-              </li>
-              <li>
-                <a href="#b2b" className="hover:text-white transition-colors">
-                  Soluciones Corporativas
-                </a>
-              </li>
+            <h4 style={{ fontSize: "11px", fontWeight: 700, color: "#a0b4c8", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "16px" }}>Servicios</h4>
+            <ul className="space-y-2.5">
+              {[["/#b2b","Examen de la Vista"],["/#b2b","Lentes de Contacto"],["/#b2b","Control de Ambliopía"],["/#b2b","Soluciones Corporativas"]].map(([href, label]) => (
+                <li key={label}>
+                  <a href={href} style={{ fontSize: "13px", color: "#6b849c", textDecoration: "none" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#09C2AF")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#6b849c")}>{label}</a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-white mb-4">Contacto</h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li>Av. Casa Blanca #401 Local #7-A</li>
-              <li>Col. Misión de Casa Blanca</li>
-              <li>San Nicolás de los Garza, N.L.</li>
-              <li>
-                <a href="mailto:contacto@makleo.com.mx" className="hover:text-white transition-colors">
-                  contacto@makleo.com.mx
-                </a>
-              </li>
-              <li>
-                <a href="tel:+528114965709" className="hover:text-white transition-colors">
-                  8113780983
-                </a>
-              </li>
+            <h4 style={{ fontSize: "11px", fontWeight: 700, color: "#a0b4c8", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "16px" }}>Contacto</h4>
+            <ul className="space-y-3">
+              {[
+                { Icon: MapPin, text: "Av. Casa Blanca #401 L7-A, San Nicolás de los Garza, N.L.", href: "#" },
+                { Icon: Mail,   text: "contacto@makleo.com.mx", href: "mailto:contacto@makleo.com.mx" },
+                { Icon: Phone,  text: "+52 811 378 0983", href: "tel:+528113780983" },
+              ].map(({ Icon, text, href }) => (
+                <li key={text} className="flex items-start gap-2.5">
+                  <Icon className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: "#6b849c" }} />
+                  <a href={href} style={{ fontSize: "13px", color: "#6b849c", textDecoration: "none", lineHeight: 1.5 }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#a0b4c8")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#6b849c")}>{text}</a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
-          <p>© 2026 MAKLEO. Todos los derechos reservados.</p>
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+          <p style={{ fontSize: "12px", color: "#6b849c" }}>© 2026 MAKLEO — Óptica Industrial y Distribuidora. Todos los derechos reservados.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">
-              Términos y Condiciones
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
-              Política de Privacidad
-            </a>
+            {[["Términos y Condiciones","/terminos"],["Política de Privacidad","/privacidad"]].map(([label, href]) => (
+              <a key={label} href={href} style={{ fontSize: "12px", color: "#6b849c", textDecoration: "none" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#a0b4c8")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#6b849c")}>{label}</a>
+            ))}
           </div>
         </div>
       </div>
+      <div style={{ height: "3px", background: "linear-gradient(90deg, transparent, #09C2AF 30%, #1EEAF9 60%, transparent)" }} />
     </footer>
   )
 }
