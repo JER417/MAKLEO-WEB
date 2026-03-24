@@ -3,251 +3,160 @@
 import type React from "react"
 import { useState } from "react"
 import emailjs from "@emailjs/browser"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Building2, Users, Package, TrendingUp, CheckCircle2, Loader2 } from "lucide-react"
+import { Loader2, CheckCircle2, Building2, Users, TrendingUp, Package } from "lucide-react"
+
+const benefits = [
+  { icon: Package,    title: "Precios preferenciales", desc: "Esquemas de pago adaptados para empresas y corporativos de todos los tamaños." },
+  { icon: Users,      title: "Servicios para tu personal", desc: "Examen de la vista, lentes de contacto y control de ambliopía incluidos." },
+  { icon: TrendingUp, title: "Más de 20 años", desc: "Experiencia comprobada en el sector industrial mexicano." },
+  { icon: Building2,  title: "Solución profesional", desc: "Asesoría técnica y documentación de cumplimiento NOM-017-STPS-2024." },
+]
 
 export function B2BSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  
-  const [formData, setFormData] = useState({
-    companyName: "",
-    contactName: "",
-    email: "",
-    phone: "",
-    volume: "",
-    message: "",
-  })
+  const [privacy, setPrivacy] = useState(false)
+  const [formData, setFormData] = useState({ companyName: "", contactName: "", email: "", phone: "", volume: "", message: "" })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!privacy) return
     setIsSubmitting(true)
-
-    // CREDENCIALES ACTUALIZADAS SEGÚN TUS CAPTURAS
-    const SERVICE_ID = "service_svjwsvt"    // ID de tu conexión Gmail
-    const TEMPLATE_ID = "template_holmh6z"   // ID de tu plantilla "Contact Us"
-    const PUBLIC_KEY = "5BJ3yondvWYjfn_HS"   // Tu Public Key de Account
-
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
+    emailjs.send("service_svjwsvt", "template_holmh6z", formData, "5BJ3yondvWYjfn_HS")
       .then(() => {
         setIsSubmitting(false)
         setIsSubmitted(true)
-        
-        // Limpiar formulario tras éxito
-        setFormData({
-          companyName: "",
-          contactName: "",
-          email: "",
-          phone: "",
-          volume: "",
-          message: "",
-        })
-
-        // El mensaje de éxito desaparece tras 5 segundos
-        setTimeout(() => setIsSubmitted(false), 5000)
+        setFormData({ companyName: "", contactName: "", email: "", phone: "", volume: "", message: "" })
+        setPrivacy(false)
+        setTimeout(() => setIsSubmitted(false), 6000)
       })
-      .catch((error) => {
-        setIsSubmitting(false)
-        console.error("Error al enviar:", error)
-        alert("Ocurrió un error al enviar la solicitud. Por favor intenta de nuevo.")
-      })
+      .catch(() => { setIsSubmitting(false); alert("Error al enviar. Por favor intenta de nuevo.") })
   }
 
-  const benefits = [
-    {
-      icon: Package,
-      title: "Esquemas Preferenciales",
-      description: "PRECIOS PREFERENCIALES y esquemas de pago adaptados para empresas y corporativos",
-    },
-    {
-      icon: Users,
-      title: "Servicios Especializados",
-      description: "Examen de la vista, lentes de contacto y control de ambliopía para tu personal",
-    },
-    {
-      icon: TrendingUp,
-      title: "Más de 20 Años",
-      description: "Experiencia proporcionando servicios ópticos especializados",
-    },
-    {
-      icon: Building2,
-      title: "Solución Profesional",
-      description: "La mejor solución a cada problema visual desde un punto de vista profesional con calidez humana",
-    },
-  ]
+  const inputStyle: React.CSSProperties = { width: "100%", padding: "12px 16px", borderRadius: "10px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", color: "#FFFFFF", fontSize: "14px", outline: "none", transition: "border-color 0.2s", fontFamily: "inherit" }
+  const labelStyle: React.CSSProperties = { display: "block", fontSize: "12px", fontWeight: 600, color: "#a0b4c8", marginBottom: "6px", letterSpacing: "0.05em", textTransform: "uppercase" }
 
   return (
-    <section id="b2b" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-6">
+    <section id="b2b" className="py-28 relative overflow-hidden" style={{ background: "#22303f" }}>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
+        style={{ width: "800px", height: "400px", background: "radial-gradient(ellipse at top, rgba(17,81,167,0.12) 0%, transparent 70%)" }} />
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <div
-              className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-2"
-              style={{ backgroundColor: "#09C2AF", color: "#FFFFFF" }}
-            >
-              Soluciones B2B
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground text-balance">
-              Servicios Especializados para Empresas y Corporativos
+
+          <div className="text-center mb-16">
+            <p className="reveal mb-3" style={{ color: "#09C2AF", fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>Soluciones B2B</p>
+            <h2 className="reveal delay-100" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "clamp(40px, 6vw, 64px)", color: "#FFFFFF", lineHeight: 0.95, letterSpacing: "-0.02em" }}>
+              SERVICIOS PARA<br />EMPRESAS Y CORPORATIVOS
             </h2>
-            <p className="text-lg text-muted-foreground text-pretty leading-relaxed max-w-2xl mx-auto">
-              Contamos con esquemas de PRECIOS PREFERENCIALES y servicios especializados para tu empresa
-            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Benefits Column */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-foreground mb-8">Beneficios Exclusivos</h3>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
 
-              {benefits.map((benefit, index) => {
-                const Icon = benefit.icon
+            {/* Left */}
+            <div className="space-y-4">
+              {benefits.map((b, i) => {
+                const Icon = b.icon
                 return (
-                  <div key={index} className="flex gap-4 items-start">
-                    <div
-                      className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
-                      style={{ backgroundColor: "#115796" }}
-                    >
-                      <Icon className="w-6 h-6 text-white" />
+                  <div key={i} className={`reveal delay-${i * 100 + 100} flex gap-4 p-5 rounded-2xl transition-colors duration-300`}
+                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)")}>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(17,81,167,0.2)" }}>
+                      <Icon className="w-5 h-5" style={{ color: "#1151A7" }} />
                     </div>
-                    <div className="space-y-1">
-                      <h4 className="font-semibold text-foreground">{benefit.title}</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
+                    <div>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "17px", color: "#FFFFFF", marginBottom: "3px" }}>{b.title}</div>
+                      <p style={{ color: "#a0b4c8", fontSize: "13px", lineHeight: 1.6 }}>{b.desc}</p>
                     </div>
                   </div>
                 )
               })}
 
-              <Card className="mt-8 border-2" style={{ borderColor: "#1EEAF9" }}>
-                <CardHeader>
-                  <CardTitle className="text-lg">Empresas que Confían en Nosotros</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">Más de 50 empresas en sectores como:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["Metal Mecanica", "Refresqueras", "Alimenticias", "Comunicación", "Industrial"].map(
-                      (sector) => (
-                        <span
-                          key={sector}
-                          className="px-3 py-1 bg-muted rounded-full text-xs font-medium text-foreground"
-                        >
-                          {sector}
-                        </span>
-                      ),
-                    )}
+              <div className="reveal p-6 rounded-2xl" style={{ background: "rgba(9,194,175,0.06)", border: "1px solid rgba(9,194,175,0.15)" }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "16px", color: "#FFFFFF", marginBottom: "10px" }}>
+                  +50 empresas en sectores como:
+                </div>
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {["⚙️ Metal Mecánica", "🏭 Refresqueras", "🥫 Alimenticias", "📡 Comunicación", "🔩 Industrial"].map((s) => (
+                    <span key={s} className="px-3 py-1 rounded-full text-xs font-medium"
+                      style={{ background: "rgba(255,255,255,0.07)", color: "#a0b4c8", border: "1px solid rgba(255,255,255,0.08)" }}>{s}</span>
+                  ))}
+                </div>
+                <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "14px" }}>
+                  <div style={{ fontSize: "11px", fontWeight: 700, color: "#a0b4c8", marginBottom: "8px", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                    Volumen mínimo de pedido
                   </div>
-                </CardContent>
-              </Card>
+                  <div className="flex gap-6">
+                    {[{ l: "PyME", v: "desde 30 piezas" }, { l: "Corporativo", v: "desde 100 piezas" }].map((m) => (
+                      <div key={m.l}>
+                        <div style={{ fontSize: "12px", color: "#6b849c" }}>{m.l}</div>
+                        <div style={{ fontSize: "14px", fontWeight: 600, color: "#09C2AF" }}>{m.v}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Form Column */}
-            <Card className="border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle className="text-2xl">Solicita una Cotización</CardTitle>
-                <p className="text-sm text-muted-foreground">Nos pondremos en contacto en menos de 24 horas</p>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Empresa *</label>
-                    <Input
-                      placeholder="Nombre de tu empresa"
-                      value={formData.companyName}
-                      onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                      required
-                    />
+            {/* Right: form */}
+            <div className="reveal reveal-right p-8 rounded-3xl"
+              style={{ background: "#2c3d50", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 30px 60px rgba(0,0,0,0.3)" }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "26px", color: "#FFFFFF", marginBottom: "4px" }}>
+                Solicita una cotización
+              </div>
+              <p style={{ color: "#a0b4c8", fontSize: "13px", marginBottom: "24px" }}>Respuesta en menos de 24 horas.</p>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label style={labelStyle}>Empresa *</label>
+                  <input style={inputStyle} placeholder="Nombre de tu empresa" value={formData.companyName} onChange={(e) => setFormData({ ...formData, companyName: e.target.value })} required onFocus={(e) => (e.target.style.borderColor = "#1151A7")} onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")} />
+                </div>
+                <div>
+                  <label style={labelStyle}>Contacto *</label>
+                  <input style={inputStyle} placeholder="Tu nombre completo" value={formData.contactName} onChange={(e) => setFormData({ ...formData, contactName: e.target.value })} required onFocus={(e) => (e.target.style.borderColor = "#1151A7")} onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")} />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label style={labelStyle}>Email *</label>
+                    <input type="email" style={inputStyle} placeholder="email@empresa.com" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required onFocus={(e) => (e.target.style.borderColor = "#1151A7")} onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")} />
                   </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Nombre de Contacto *</label>
-                    <Input
-                      placeholder="Tu nombre completo"
-                      value={formData.contactName}
-                      onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                      required
-                    />
+                  <div>
+                    <label style={labelStyle}>Teléfono *</label>
+                    <input type="tel" style={inputStyle} placeholder="+52 811..." value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} required onFocus={(e) => (e.target.style.borderColor = "#1151A7")} onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")} />
                   </div>
+                </div>
+                <div>
+                  <label style={labelStyle}>Volumen estimado *</label>
+                  <input style={inputStyle} placeholder="Ej: 100–500 piezas" value={formData.volume} onChange={(e) => setFormData({ ...formData, volume: e.target.value })} required onFocus={(e) => (e.target.style.borderColor = "#1151A7")} onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")} />
+                </div>
+                <div>
+                  <label style={labelStyle}>Mensaje</label>
+                  <textarea style={{ ...inputStyle, minHeight: "90px", resize: "vertical" }} placeholder="Cuéntanos sobre tus necesidades..." value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} onFocus={(e) => (e.target.style.borderColor = "#1151A7")} onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")} />
+                </div>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Email *</label>
-                      <Input
-                        type="email"
-                        placeholder="email@empresa.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        required
-                      />
-                    </div>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input type="checkbox" checked={privacy} onChange={(e) => setPrivacy(e.target.checked)} required className="mt-0.5" style={{ accentColor: "#1151A7", width: "15px", height: "15px", flexShrink: 0 }} />
+                  <span style={{ fontSize: "12px", color: "#6b849c", lineHeight: 1.5 }}>
+                    He leído y acepto el{" "}
+                    <a href="/privacidad" target="_blank" rel="noopener noreferrer" style={{ color: "#09C2AF", textDecoration: "underline" }}>Aviso de Privacidad</a>
+                    {" "}conforme a la LFPDPPP. *
+                  </span>
+                </label>
 
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-foreground">Teléfono *</label>
-                      <Input
-                        type="tel"
-                        placeholder="+52 55 1234 5678"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        required
-                      />
-                    </div>
+                <button type="submit" disabled={isSubmitting || !privacy} className="w-full py-4 rounded-xl font-semibold text-sm transition-all duration-300"
+                  style={{ background: isSubmitting || !privacy ? "rgba(17,81,167,0.3)" : "linear-gradient(135deg, #1151A7, #1a6fd4)", color: "#fff", cursor: isSubmitting || !privacy ? "not-allowed" : "pointer", boxShadow: !isSubmitting && privacy ? "0 0 25px rgba(17,81,167,0.4)" : "none", fontFamily: "'Barlow Condensed', sans-serif", fontSize: "16px", letterSpacing: "0.05em" }}>
+                  {isSubmitting ? (<span className="flex items-center justify-center gap-2"><Loader2 className="w-4 h-4 animate-spin" /> Enviando...</span>) : "ENVIAR SOLICITUD"}
+                </button>
+
+                {isSubmitted && (
+                  <div className="flex items-center gap-2 justify-center py-2 rounded-xl" style={{ background: "rgba(9,194,175,0.1)", border: "1px solid rgba(9,194,175,0.2)" }}>
+                    <CheckCircle2 className="w-4 h-4" style={{ color: "#09C2AF" }} />
+                    <span style={{ color: "#09C2AF", fontSize: "13px", fontWeight: 600 }}>Cotización enviada con éxito</span>
                   </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Volumen Estimado *</label>
-                    <Input
-                      placeholder="Ej: 100 - 10,000"
-                      value={formData.volume}
-                      onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-foreground">Mensaje</label>
-                    <Textarea
-                      placeholder="Cuéntanos sobre tus necesidades específicas..."
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    />
-                  </div>
-
-                  <div className="space-y-4 pt-2">
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full text-white font-semibold transition-all"
-                      style={{ backgroundColor: "#115796" }}
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Enviando...
-                        </>
-                      ) : (
-                        "Enviar Solicitud"
-                      )}
-                    </Button>
-
-                    {/* Mensaje de éxito verde discreto */}
-                    {isSubmitted && (
-                      <div className="flex items-center justify-center gap-2 text-emerald-600 animate-in fade-in duration-300">
-                        <CheckCircle2 className="w-4 h-4" />
-                        <span className="text-sm font-bold text-center">Cotización enviada con éxito</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <p className="text-xs text-muted-foreground text-center">
-                    Al enviar este formulario aceptas nuestra política de privacidad
-                  </p>
-                </form>
-              </CardContent>
-            </Card>
+                )}
+              </form>
+            </div>
           </div>
         </div>
       </div>

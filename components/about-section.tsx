@@ -1,73 +1,71 @@
-import { Target, Eye, Award } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+"use client"
+
+import { Mail, Phone, MapPin } from "lucide-react"
+
+const values = [
+  { num: "01", title: "Misión", text: "Entregar a cada cliente una solución óptica personalizada que se adecúe a sus necesidades industriales y estéticas — con confianza, comodidad y precisión." },
+  { num: "02", title: "Visión", text: "Ser la empresa óptica industrial de referencia en México, innovadora y confiable, con el catálogo certificado más completo del mercado." },
+  { num: "03", title: "Ética", text: "Personas con espíritu de servicio. Valoramos el esfuerzo del equipo y nos comprometemos con productos y servicios de máxima excelencia." },
+]
 
 export function AboutSection() {
-  const values = [
-    {
-      icon: Target,
-      title: "Misión",
-      description:
-        "Trabajamos para entregar a nuestros pacientes una solución personalizada, que se adecúe a sus necesidades ópticas y estéticas, que les permita ver con confianza, comodidad y precisión.",
-    },
-    {
-      icon: Eye,
-      title: "Visión",
-      description:
-        "Ser la mejor empresa óptica del mercado, innovadora, eficaz y sobre todo confiable, contando siempre con optometristas altamente calificados.",
-    },
-    {
-      icon: Award,
-      title: "Ética",
-      description:
-        "Somos personas con espíritu de servicio y disciplina. Valoramos el esfuerzo y la iniciativa del personal, nuestros productos y servicios son de máxima excelencia, eficiencia y eficacia.",
-    },
-  ]
-
   return (
-    <section className="py-24 bg-background">
+    <section className="py-28 relative overflow-hidden" style={{ background: "#1b2738" }}>
+      <div className="absolute left-0 top-0 bottom-0 w-px pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, rgba(9,194,175,0.3), transparent)" }} />
+
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground text-balance">Acerca de Nosotros</h2>
-            <p className="text-lg text-muted-foreground text-pretty leading-relaxed max-w-3xl mx-auto">
-              Somos una empresa mexicana con más de 20 años de experiencia proporcionando servicios ópticos
-              especializados. Nuestro trabajo primordial consiste en ofrecer a nuestros pacientes la mejor solución a
-              cada problema visual, desde un punto de vista profesional.
-            </p>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-end mb-20">
+            <div>
+              <p className="reveal mb-3" style={{ color: "#09C2AF", fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                Sobre nosotros
+              </p>
+              <h2 className="reveal delay-100" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "clamp(40px, 6vw, 70px)", color: "#FFFFFF", lineHeight: 0.95, letterSpacing: "-0.02em" }}>
+                20 AÑOS<br />
+                <span style={{ color: "#a0b4c8", fontWeight: 300 }}>protegiendo la</span><br />
+                VISIÓN INDUSTRIAL
+              </h2>
+            </div>
+            <div className="reveal reveal-right delay-200">
+              <p style={{ color: "#a0b4c8", lineHeight: 1.8, fontSize: "15px" }}>
+                Somos la primera Óptica Industrial y Distribuidora en México. Combinamos más de 20 años de experiencia en servicios ópticos especializados con distribución de EPP certificado — una combinación que ningún otro proveedor ofrece.
+              </p>
+              <div className="mt-6 flex flex-col gap-2.5">
+                {[
+                  { icon: Phone, text: "+52 811 378 0983", href: "tel:+528113780983" },
+                  { icon: Mail,  text: "contacto@makleo.com.mx", href: "mailto:contacto@makleo.com.mx" },
+                  { icon: MapPin, text: "San Nicolás de los Garza, N.L.", href: "#" },
+                ].map(({ icon: Icon, text, href }) => (
+                  <a key={text} href={href} className="inline-flex items-center gap-3 transition-colors"
+                    style={{ color: "#6b849c", fontSize: "13px" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#09C2AF")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#6b849c")}>
+                    <Icon className="w-3.5 h-3.5 flex-shrink-0" />
+                    {text}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => {
-              const Icon = value.icon
-              return (
-                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <CardContent className="p-8 space-y-4">
-                    <div
-                      className="w-14 h-14 rounded-lg flex items-center justify-center"
-                      style={{ backgroundColor: index === 0 ? "#115796" : index === 1 ? "#09C2AF" : "#1EEAF9" }}
-                    >
-                      <Icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground">{value.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{value.description}</p>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-
-          <div className="mt-16 text-center">
-            <Card className="border-2 inline-block" style={{ borderColor: "#09C2AF" }}>
-              <CardContent className="p-8">
-                <p className="text-lg font-semibold text-foreground mb-2">
-                  Un entorno seguro comienza con la protección adecuada
-                </p>
-                <p className="text-muted-foreground max-w-2xl">
-                  En MAKLEO contamos con lentes de seguridad industrial certificados para graduar confiables, resistentes y
-                  certificados, ideales para prevenir accidentes y cumplir con las normas de seguridad.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-3 gap-px" style={{ background: "rgba(255,255,255,0.05)" }}>
+            {values.map((v, i) => (
+              <div key={v.num} className={`reveal delay-${(i + 1) * 100} p-8 group transition-colors duration-300`}
+                style={{ background: "#1b2738" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "#22303f")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "#1b2738")}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "64px", color: "rgba(255,255,255,0.04)", lineHeight: 1, marginBottom: "-8px" }}>
+                  {v.num}
+                </div>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "22px", color: "#FFFFFF", marginBottom: "12px" }}>
+                  {v.title}
+                </div>
+                <p style={{ color: "#a0b4c8", fontSize: "14px", lineHeight: 1.7 }}>{v.text}</p>
+                <div className="mt-6 w-8 h-0.5 transition-all duration-300 group-hover:w-16" style={{ background: "#09C2AF" }} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

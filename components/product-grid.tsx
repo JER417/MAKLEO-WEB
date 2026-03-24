@@ -1,57 +1,82 @@
 "use client"
 
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
 import { products } from "@/lib/products"
 
 export function ProductGrid() {
   return (
-    <section id="productos" className="py-24 bg-muted/30">
+    <section id="productos" className="py-28" style={{ background: "#1b2738" }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground text-balance">Catálogo Especializado</h2>
-          <p className="text-lg text-muted-foreground text-pretty leading-relaxed">
-            Cada producto está diseñado para cumplir con los más altos estándares de seguridad industrial
-          </p>
-        </div>
+        <div className="max-w-6xl mx-auto">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {products.map((product) => (
-            <Link key={product.id} href={`/productos/${product.id}`}>
-              <Card className="group cursor-pointer overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-card h-full">
-                <div className="relative aspect-square overflow-hidden bg-muted">
-                  <img
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
-                  />
-                  <img
-                    src={product.imageHover || "/placeholder.svg"}
-                    alt={`${product.name} - vista alternativa`}
-                    className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  />
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <p className="reveal mb-3" style={{ color: "#09C2AF", fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                Catálogo
+              </p>
+              <h2 className="reveal delay-100" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "clamp(40px, 6vw, 64px)", color: "#FFFFFF", lineHeight: 0.95, letterSpacing: "-0.02em" }}>
+                LENTES DE<br />SEGURIDAD INDUSTRIAL
+              </h2>
+            </div>
+            <p className="reveal reveal-right delay-200 max-w-xs" style={{ color: "#a0b4c8", fontSize: "14px", lineHeight: 1.7 }}>
+              11 modelos certificados ANSI/ISEA Z87.1-2020. Disponibles con graduación óptica.
+            </p>
+          </div>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <span className="text-white text-sm font-medium">Ver detalles →</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {products.map((product, i) => {
+              const delay = `delay-${Math.min((i % 3) * 100 + 100, 500)}`
+              return (
+                <Link key={product.id} href={`/productos/${product.id}`}
+                  className={`reveal ${delay} group block rounded-2xl overflow-hidden transition-all duration-400`}
+                  style={{ background: "#22303f", border: "1px solid rgba(255,255,255,0.06)" }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.border = "1px solid rgba(9,194,175,0.3)"
+                    el.style.transform = "translateY(-4px)"
+                    el.style.boxShadow = "0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(9,194,175,0.08)"
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement
+                    el.style.border = "1px solid rgba(255,255,255,0.06)"
+                    el.style.transform = "translateY(0)"
+                    el.style.boxShadow = "none"
+                  }}>
+                  <div className="relative aspect-square overflow-hidden" style={{ background: "#2c3d50" }}>
+                    <Image src={product.image} alt={product.name} fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-all duration-500 group-hover:scale-105"
+                      loading={i < 3 ? "eager" : "lazy"} priority={i < 3} />
+                    <Image src={product.imageHover} alt={product.name} fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      loading="lazy" />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5"
+                      style={{ background: "linear-gradient(to top, rgba(27,39,56,0.95) 0%, transparent 60%)" }}>
+                      <span style={{ color: "#09C2AF", fontSize: "13px", fontWeight: 600 }}>Ver detalles →</span>
+                    </div>
                   </div>
-                </div>
-
-                <CardContent className="p-6 space-y-3">
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{product.description}</p>
-
-                  <div className="flex items-center gap-2 pt-2">
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#09C2AF" }} />
-                    <span className="text-xs text-muted-foreground font-medium">Certificado ANSI</span>
+                  <div className="p-5">
+                    <h3 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "18px", color: "#FFFFFF", letterSpacing: "-0.01em", marginBottom: "4px" }}>
+                      {product.name}
+                    </h3>
+                    <p style={{ color: "#a0b4c8", fontSize: "13px", lineHeight: 1.5, marginBottom: "12px" }}>
+                      {product.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {product.certifications.slice(0, 2).map((cert) => (
+                        <span key={cert} className="px-2 py-0.5 rounded text-xs font-semibold"
+                          style={{ background: "rgba(17,81,167,0.2)", color: "#7aabcc", border: "1px solid rgba(17,81,167,0.3)" }}>
+                          {cert}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
+                </Link>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -2,273 +2,296 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Check, MessageCircle, ZoomIn, ZoomOut, Shield, Award, ChevronRight } from "lucide-react"
+import NextImage from "next/image"
+import { ArrowLeft, Check, MessageCircle, ZoomIn, ZoomOut, ChevronRight } from "lucide-react"
 import { products, type Product } from "@/lib/products"
+import { Header } from "@/components/header"
 
-interface ProductDetailClientProps {
-  product: Product
-}
-
-export function ProductDetailClient({ product }: ProductDetailClientProps) {
+export function ProductDetailClient({ product }: { product: Product }) {
   const [currentImage, setCurrentImage] = useState(product.image)
   const [isZoomed, setIsZoomed] = useState(false)
 
   const whatsappMessage = encodeURIComponent(
-    `Hola, me interesa cotizar el modelo ${product.name}. ¿Podrían proporcionarme más información sobre precios y disponibilidad?`,
+    `Hola, me interesa cotizar el modelo ${product.name}. ¿Podrían proporcionarme más información sobre precios y disponibilidad?`
   )
 
-  // Get related products (excluding current)
   const relatedProducts = products.filter((p) => p.id !== product.id).slice(0, 3)
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur-md">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
+    <div style={{ minHeight: "100vh", background: "#1b2738", color: "#FFFFFF" }}>
+
+      {/* Shared header — same as homepage */}
+      <Header />
+
+      {/* Breadcrumb bar */}
+      <div
+        style={{
+          paddingTop: "88px",
+          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          background: "rgba(27,39,56,0.8)",
+          backdropFilter: "blur(8px)",
+        }}
+      >
+        <div className="container mx-auto px-6 py-3 flex items-center gap-2" style={{ fontSize: "13px" }}>
+          <Link
+            href="/"
+            style={{ color: "#6b849c", textDecoration: "none" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#a0b4c8")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#6b849c")}
+          >
+            Inicio
+          </Link>
+          <ChevronRight className="w-3.5 h-3.5" style={{ color: "#6b849c", flexShrink: 0 }} />
+          <Link
+            href="/#productos"
+            style={{ color: "#6b849c", textDecoration: "none" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#a0b4c8")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#6b849c")}
+          >
+            Catálogo
+          </Link>
+          <ChevronRight className="w-3.5 h-3.5" style={{ color: "#6b849c", flexShrink: 0 }} />
+          <span style={{ color: "#FFFFFF", fontWeight: 500 }}>{product.name}</span>
+
+          {/* Back button — right side */}
+          <div className="ml-auto">
             <Link
               href="/#productos"
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
+              className="hidden md:inline-flex items-center gap-1.5 transition-colors"
+              style={{ color: "#6b849c", fontSize: "13px", textDecoration: "none" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#09C2AF")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#6b849c")}
             >
-              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-              <span className="font-medium">Volver al catálogo</span>
+              <ArrowLeft className="w-3.5 h-3.5" />
+              Volver al catálogo
             </Link>
-
-            <Link href="/" className="flex items-center gap-3">
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center"
-                style={{ backgroundColor: "#115796" }}
-              >
-                
-              </div>
-              <span className="text-xl font-bold text-foreground tracking-tight">MAKLEO</span>
-            </Link>
-
-            <Button className="text-white font-semibold hidden md:flex" style={{ backgroundColor: "#09C2AF" }} asChild>
-              <a href={`https://wa.me/528113780983?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Cotizar
-              </a>
-            </Button>
           </div>
         </div>
-      </header>
+      </div>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-6 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto">
-          {/* Image Gallery */}
-          <div className="space-y-6">
+      {/* Main */}
+      <main className="container mx-auto px-6 py-14">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14">
+
+          {/* Images */}
+          <div className="space-y-4">
             <div
-              className={`relative aspect-square overflow-hidden rounded-2xl bg-muted ${
-                isZoomed ? "cursor-zoom-out" : "cursor-zoom-in"
-              }`}
+              className="relative aspect-square overflow-hidden rounded-2xl"
+              style={{
+                background: "#2c3d50",
+                border: "1px solid rgba(255,255,255,0.07)",
+                cursor: isZoomed ? "zoom-out" : "zoom-in",
+              }}
               onClick={() => setIsZoomed(!isZoomed)}
             >
-              <img
-                src={currentImage || "/placeholder.svg"}
+              <NextImage
+                src={currentImage}
                 alt={product.name}
-                className={`w-full h-full object-cover transition-transform duration-500 ease-out ${
-                  isZoomed ? "scale-150" : "scale-100"
-                }`}
+                fill
+                sizes="(max-width:1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-500"
+                style={{ transform: isZoomed ? "scale(1.5)" : "scale(1)" }}
+                priority
               />
 
-              {/* Zoom indicator */}
-              <div className="absolute top-4 right-4 p-3 bg-background/90 backdrop-blur-sm rounded-full shadow-lg">
-                {isZoomed ? (
-                  <ZoomOut className="w-5 h-5 text-foreground" />
-                ) : (
-                  <ZoomIn className="w-5 h-5 text-foreground" />
-                )}
+              {/* Zoom icon */}
+              <div
+                className="absolute top-4 right-4 p-2.5 rounded-full"
+                style={{ background: "rgba(27,39,56,0.85)", backdropFilter: "blur(8px)" }}
+              >
+                {isZoomed
+                  ? <ZoomOut className="w-4 h-4" style={{ color: "#a0b4c8" }} />
+                  : <ZoomIn className="w-4 h-4" style={{ color: "#a0b4c8" }} />
+                }
               </div>
 
-              {/* Certification badge */}
-              <div className="absolute top-4 left-4">
-                <Badge
-                  className="px-3 py-1.5 text-sm font-semibold text-white shadow-lg"
-                  style={{ backgroundColor: "#115796" }}
-                >
-                  <Shield className="w-4 h-4 mr-1.5" />
-                  Certificado
-                </Badge>
+              {/* Cert badge */}
+              <div
+                className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5"
+                style={{ background: "rgba(17,81,167,0.9)", color: "#fff", backdropFilter: "blur(8px)" }}
+              >
+                ✓ Certificado
               </div>
             </div>
 
             {/* Thumbnails */}
-            <div className="flex gap-4">
-              <button
-                onClick={() => {
-                  setCurrentImage(product.image)
-                  setIsZoomed(false)
-                }}
-                className={`relative w-24 h-24 rounded-xl overflow-hidden border-2 transition-all duration-300 ${
-                  currentImage === product.image
-                    ? "border-primary ring-2 ring-primary/20"
-                    : "border-border hover:border-primary/50"
-                }`}
-              >
-                <img
-                  src={product.image || "/placeholder.svg"}
-                  alt="Vista frontal"
-                  className="w-full h-full object-cover"
-                />
-              </button>
-              <button
-                onClick={() => {
-                  setCurrentImage(product.imageHover)
-                  setIsZoomed(false)
-                }}
-                className={`relative w-24 h-24 rounded-xl overflow-hidden border-2 transition-all duration-300 ${
-                  currentImage === product.imageHover
-                    ? "border-primary ring-2 ring-primary/20"
-                    : "border-border hover:border-primary/50"
-                }`}
-              >
-                <img
-                  src={product.imageHover || "/placeholder.svg"}
-                  alt="Vista alternativa"
-                  className="w-full h-full object-cover"
-                />
-              </button>
+            <div className="flex gap-3">
+              {[product.image, product.imageHover].map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setCurrentImage(img); setIsZoomed(false) }}
+                  className="relative w-20 h-20 rounded-xl overflow-hidden transition-all"
+                  style={{
+                    border: currentImage === img
+                      ? "2px solid #09C2AF"
+                      : "2px solid rgba(255,255,255,0.08)",
+                    background: "#2c3d50",
+                  }}
+                >
+                  <NextImage src={img} alt="" fill sizes="80px" className="object-cover" />
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Product Info */}
-          <div className="space-y-8">
-            {/* Title & Description */}
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight text-balance">
+          {/* Info */}
+          <div className="space-y-7">
+            <div>
+              <h1
+                style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 800,
+                  fontSize: "clamp(36px, 5vw, 52px)",
+                  color: "#FFFFFF",
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1,
+                  marginBottom: "8px",
+                }}
+              >
                 {product.name}
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed">{product.description}</p>
+              <p style={{ color: "#a0b4c8", fontSize: "16px", lineHeight: 1.6 }}>
+                {product.description}
+              </p>
             </div>
 
-            {/* Detailed Description */}
-            <div className="space-y-3 p-6 rounded-2xl bg-muted/50 border border-border/50">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                Descripción Técnica
-              </h2>
-              <p className="text-foreground leading-relaxed text-lg">{product.detailedDescription}</p>
+            {/* Description */}
+            <div
+              className="p-5 rounded-xl"
+              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
+            >
+              <div style={{ fontSize: "10px", fontWeight: 700, color: "#6b849c", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "8px" }}>
+                Descripción técnica
+              </div>
+              <p style={{ color: "#a0b4c8", fontSize: "14px", lineHeight: 1.7 }}>
+                {product.detailedDescription}
+              </p>
             </div>
 
             {/* Features */}
-            <div className="space-y-4">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                Características Principales
-              </h2>
-              <ul className="grid gap-3">
-                {product.features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3 group">
+            <div>
+              <div style={{ fontSize: "10px", fontWeight: 700, color: "#6b849c", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "12px" }}>
+                Características
+              </div>
+              <ul className="space-y-2.5">
+                {product.features.map((f, i) => (
+                  <li key={i} className="flex items-center gap-3">
                     <div
-                      className="mt-0.5 p-1 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: "rgba(9, 194, 175, 0.15)" }}
+                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                      style={{ background: "rgba(9,194,175,0.15)" }}
                     >
-                      <Check className="w-4 h-4" style={{ color: "#09C2AF" }} />
+                      <Check className="w-3 h-3" style={{ color: "#09C2AF" }} />
                     </div>
-                    <span className="text-foreground text-lg">{feature}</span>
+                    <span style={{ color: "#FFFFFF", fontSize: "14px" }}>{f}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Certifications */}
-            <div className="space-y-4">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                Certificaciones de Seguridad
-              </h2>
-              <div className="flex flex-wrap gap-3">
-                {product.certifications.map((cert, index) => (
-                  <Badge
-                    key={index}
-                    variant="secondary"
-                    className="px-4 py-2 text-sm font-semibold flex items-center gap-2"
-                    style={{ backgroundColor: "#115796", color: "#FFFFFF" }}
+            <div>
+              <div style={{ fontSize: "10px", fontWeight: 700, color: "#6b849c", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "10px" }}>
+                Certificaciones
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {product.certifications.map((cert) => (
+                  <span
+                    key={cert}
+                    className="px-3 py-1.5 rounded-lg text-sm font-semibold"
+                    style={{ background: "rgba(17,81,167,0.2)", color: "#7aabcc", border: "1px solid rgba(17,81,167,0.3)" }}
                   >
-                    <Award className="w-4 h-4" />
                     {cert}
-                  </Badge>
+                  </span>
                 ))}
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="space-y-4 pt-4">
-              <Button
-                size="lg"
-                className="w-full text-white font-semibold text-lg h-14 rounded-xl shadow-lg hover:shadow-xl transition-all"
-                style={{ backgroundColor: "#09C2AF" }}
-                asChild
-              >
-                <a
-                  href={`https://wa.me/528113780983?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Cotizar vía WhatsApp
-                </a>
-              </Button>
-
-              <p className="text-center text-sm text-muted-foreground">
-                Respuesta en menos de 24 horas • Cotización sin compromiso
-              </p>
-            </div>
+            {/* CTA */}
+            <a
+              href={`https://wa.me/528113780983?text=${whatsappMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold transition-all hover:scale-[1.02]"
+              style={{
+                background: "#09C2AF",
+                color: "#1b2738",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontSize: "18px",
+                letterSpacing: "0.05em",
+                boxShadow: "0 0 30px rgba(9,194,175,0.3)",
+                textDecoration: "none",
+              }}
+            >
+              <MessageCircle className="w-5 h-5" />
+              COTIZAR POR WHATSAPP
+            </a>
+            <p style={{ textAlign: "center", fontSize: "12px", color: "#6b849c" }}>
+              Respuesta en menos de 24 horas · Cotización sin compromiso
+            </p>
           </div>
         </div>
 
-        {/* Related Products */}
-        <section className="mt-24 pt-12 border-t border-border/50">
+        {/* Related products */}
+        <section className="mt-24 pt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">Productos Relacionados</h2>
+            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "28px", color: "#FFFFFF" }}>
+              Productos relacionados
+            </h2>
             <Link
               href="/#productos"
-              className="flex items-center gap-1 text-primary hover:gap-2 transition-all font-medium"
+              className="flex items-center gap-1 text-sm font-medium"
+              style={{ color: "#09C2AF", textDecoration: "none" }}
             >
-              Ver todos
-              <ChevronRight className="w-4 h-4" />
+              Ver todos <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {relatedProducts.map((relatedProduct) => (
-              <Link key={relatedProduct.id} href={`/productos/${relatedProduct.id}`}>
-                <Card className="group cursor-pointer overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-card">
-                  <div className="relative aspect-square overflow-hidden bg-muted">
-                    <img
-                      src={relatedProduct.image || "/placeholder.svg"}
-                      alt={relatedProduct.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+          <div className="grid md:grid-cols-3 gap-4">
+            {relatedProducts.map((p) => (
+              <Link
+                key={p.id}
+                href={`/productos/${p.id}`}
+                className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                style={{ background: "#22303f", border: "1px solid rgba(255,255,255,0.06)", textDecoration: "none" }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "rgba(9,194,175,0.25)")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)")}
+              >
+                <div className="relative aspect-square overflow-hidden" style={{ background: "#2c3d50" }}>
+                  <NextImage
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    sizes="33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-4">
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "17px", color: "#FFFFFF", marginBottom: "4px" }}>
+                    {p.name}
                   </div>
-                  <CardContent className="p-5">
-                    <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {relatedProduct.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{relatedProduct.description}</p>
-                  </CardContent>
-                </Card>
+                  <div style={{ fontSize: "12px", color: "#a0b4c8" }}>{p.description}</div>
+                </div>
               </Link>
             ))}
           </div>
         </section>
       </main>
 
-      {/* Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur-md border-t border-border md:hidden z-50">
-        <Button
-          size="lg"
-          className="w-full text-white font-semibold h-12 rounded-xl"
-          style={{ backgroundColor: "#09C2AF" }}
-          asChild
+      {/* Mobile bottom CTA */}
+      <div
+        className="fixed bottom-0 left-0 right-0 p-4 md:hidden z-50"
+        style={{ background: "rgba(27,39,56,0.97)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
+      >
+        <a
+          href={`https://wa.me/528113780983?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-bold"
+          style={{ background: "#09C2AF", color: "#1b2738", textDecoration: "none" }}
         >
-          <a href={`https://wa.me/528113780983?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
-            <MessageCircle className="w-5 h-5 mr-2" />
-            Cotizar vía WhatsApp
-          </a>
-        </Button>
+          <MessageCircle className="w-5 h-5" />
+          Cotizar por WhatsApp
+        </a>
       </div>
     </div>
   )
