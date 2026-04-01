@@ -15,7 +15,7 @@ export function Footer() {
               <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "22px", color: "#FFFFFF", letterSpacing: "-0.02em" }}>MAKLEO</span>
             </div>
             <p style={{ fontSize: "13px", color: "#6b849c", lineHeight: 1.7 }}>
-              La primera Óptica Industrial y Distribuidora en México. Certificados ANSI/ISEA Z87.1-2020 y NOM-017-STPS-2024.
+              La primera Óptica y Distribuidora Industrial en México. Certificados ANSI/ISEA Z87.1-2020 y NOM-017-STPS-2024.
             </p>
             <a href="https://wa.me/528113780983" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold"
@@ -54,9 +54,10 @@ export function Footer() {
             <h4 style={{ fontSize: "11px", fontWeight: 700, color: "#a0b4c8", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: "16px" }}>Contacto</h4>
             <ul className="space-y-3">
               {[
-                { Icon: MapPin, text: "Av. Casa Blanca #401 L7-A, San Nicolás de los Garza, N.L.", href: "#" },
+                { Icon: MapPin, text: "PLaza Casa Blanca Av. Casa Blanca #401 L7-A, San Nicolás de los Garza, N.L.", href: "#" },
                 { Icon: Mail,   text: "contacto@makleo.com.mx", href: "mailto:contacto@makleo.com.mx" },
                 { Icon: Phone,  text: "+52 811 378 0983", href: "tel:+528113780983" },
+                { Icon: Phone,  text: "+52 811 496 5709" },
               ].map(({ Icon, text, href }) => (
                 <li key={text} className="flex items-start gap-2.5">
                   <Icon className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: "#6b849c" }} />

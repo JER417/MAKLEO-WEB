@@ -77,7 +77,7 @@ export function HeroSection() {
           }}>
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#09C2AF" }} />
             <span style={{ color: "#09C2AF", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em" }}>
-              LA PRIMERA ÓPTICA INDUSTRIAL EN MÉXICO
+              LA PRIMERA ÓPTICA Y DISTRIBUIDORA INDUSTRIAL EN MÉXICO
             </span>
           </div>
 

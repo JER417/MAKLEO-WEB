@@ -30,7 +30,7 @@ export function AboutSection() {
             </div>
             <div className="reveal reveal-right delay-200">
               <p style={{ color: "#a0b4c8", lineHeight: 1.8, fontSize: "15px" }}>
-                Somos la primera Óptica Industrial y Distribuidora en México. Combinamos más de 20 años de experiencia en servicios ópticos especializados con distribución de EPP certificado — una combinación que ningún otro proveedor ofrece.
+                Somos la primera Óptica y Distribuidora Industrial en México. Combinamos más de 20 años de experiencia en servicios ópticos especializados con distribución de lentes de seguridad certificados — una combinación que ningún otro proveedor ofrece.
               </p>
               <div className="mt-6 flex flex-col gap-2.5">
                 {[
