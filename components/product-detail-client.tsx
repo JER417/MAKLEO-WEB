@@ -62,17 +62,17 @@ export function ProductDetailClient({ product }: { product: Product }) {
 
           {/* Images */}
           <div className="space-y-4">
-            <button
-              type="button"
-              className="relative w-full aspect-square overflow-hidden rounded-2xl"
+            <div
+              role="button"
+              tabIndex={0}
+              className="relative aspect-square overflow-hidden rounded-2xl"
               style={{
                 background: "#2c3d50",
                 border: "1px solid rgba(255,255,255,0.07)",
                 cursor: isZoomed ? "zoom-out" : "zoom-in",
-                padding: 0,
-                display: "block",
               }}
               onClick={() => setIsZoomed(!isZoomed)}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setIsZoomed((v) => !v) } }}
               aria-label={isZoomed ? "Reducir zoom" : "Ampliar imagen"}
               aria-pressed={isZoomed}
             >
@@ -85,7 +85,7 @@ export function ProductDetailClient({ product }: { product: Product }) {
                 style={{ transform: isZoomed ? "scale(1.5)" : "scale(1)" }}
                 priority
               />
-              <div className="absolute top-4 right-4 p-2.5 rounded-full pointer-events-none"
+              <div className="absolute top-4 right-4 p-2.5 rounded-full"
                 style={{ background: "rgba(27,39,56,0.85)", backdropFilter: "blur(8px)" }}
               >
                 {isZoomed
@@ -93,12 +93,12 @@ export function ProductDetailClient({ product }: { product: Product }) {
                   : <ZoomIn className="w-4 h-4" style={{ color: "#a0b4c8" }} />
                 }
               </div>
-              <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 pointer-events-none"
+              <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5"
                 style={{ background: "rgba(17,81,167,0.9)", color: "#fff", backdropFilter: "blur(8px)" }}
               >
                 ✓ Certificado
               </div>
-            </button>
+            </div>
 
             {/* Thumbnails */}
             <div className="flex gap-3">
@@ -125,7 +125,7 @@ export function ProductDetailClient({ product }: { product: Product }) {
           {/* Info */}
           <div className="space-y-7">
             <div>
-              <h1 style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "clamp(36px, 5vw, 52px)", color: "#FFFFFF", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "8px" }}>
+              <h1 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "clamp(36px, 5vw, 52px)", color: "#FFFFFF", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "8px" }}>
                 {product.name}
               </h1>
               <p style={{ color: "#a0b4c8", fontSize: "16px", lineHeight: 1.6 }}>
@@ -178,7 +178,7 @@ export function ProductDetailClient({ product }: { product: Product }) {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold transition-all hover:scale-[1.02]"
-              style={{ background: "#09C2AF", color: "#1b2738", fontFamily: "var(--font-heading)", fontSize: "18px", letterSpacing: "0.05em", boxShadow: "0 0 30px rgba(9,194,175,0.3)", textDecoration: "none" }}
+              style={{ background: "#09C2AF", color: "#1b2738", fontFamily: "'Barlow Condensed', sans-serif", fontSize: "18px", letterSpacing: "0.05em", boxShadow: "0 0 30px rgba(9,194,175,0.3)", textDecoration: "none" }}
             >
               <MessageCircle className="w-5 h-5" />
               COTIZAR POR WHATSAPP
@@ -192,7 +192,7 @@ export function ProductDetailClient({ product }: { product: Product }) {
         {/* Related products */}
         <section className="mt-24 pt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           <div className="flex items-center justify-between mb-8">
-            <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "28px", color: "#FFFFFF" }}>
+            <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "28px", color: "#FFFFFF" }}>
               Productos relacionados
             </h2>
             <Link href="/#productos" className="flex items-center gap-1 text-sm font-medium" style={{ color: "#09C2AF", textDecoration: "none" }}>
@@ -213,7 +213,7 @@ export function ProductDetailClient({ product }: { product: Product }) {
                   <NextImage src={p.image} alt={p.name} fill sizes="33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                 </div>
                 <div className="p-4">
-                  <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "17px", color: "#FFFFFF", marginBottom: "4px" }}>{p.name}</div>
+                  <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "17px", color: "#FFFFFF", marginBottom: "4px" }}>{p.name}</div>
                   <div style={{ fontSize: "12px", color: "#a0b4c8" }}>{p.description}</div>
                 </div>
               </Link>

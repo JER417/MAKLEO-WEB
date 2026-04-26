@@ -15,7 +15,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <Image src="/makleologo.png" alt="MAKLEO" width={36} height={36} className="rounded-lg" />
-              <span style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "22px", color: "#FFFFFF", letterSpacing: "-0.02em" }}>MAKLEO</span>
+              <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "22px", color: "#FFFFFF", letterSpacing: "-0.02em" }}>MAKLEO</span>
             </div>
             <p style={{ fontSize: "13px", color: "#6b849c", lineHeight: 1.7 }}>
               La primera Óptica y Distribuidora Industrial en México. Certificados ANSI/ISEA Z87.1-2020 y NOM-017-STPS-2024.

@@ -1,23 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Barlow, Barlow_Condensed } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SITE_URL, PHONE, EMAIL } from "@/lib/constants"
 import "./globals.css"
-
-const barlow = Barlow({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-barlow",
-  display: "swap",
-})
-
-const barlowCondensed = Barlow_Condensed({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-barlow-condensed",
-  display: "swap",
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -50,14 +35,14 @@ export const metadata: Metadata = {
     title: "Óptica Industrial y Distribuidora MAKLEO | Lentes de Seguridad Certificados",
     description:
       "La primera Óptica Industrial en México. Certificados ANSI/ISEA Z87.1-2020 y NOM-017-STPS-2024. Graduación industrial disponible.",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "MAKLEO — Óptica Industrial" }],
+    images: [{ url: "/makleologo.png", width: 256, height: 256, alt: "MAKLEO — Óptica Industrial" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "MAKLEO — Óptica Industrial y Distribuidora",
     description:
       "Lentes de seguridad industrial certificados ANSI/ISEA Z87.1-2020. Primera óptica industrial en México con graduación disponible.",
-    images: ["/opengraph-image"],
+    images: ["/makleologo.png"],
   },
   icons: { icon: "/favicon.ico", apple: "/apple-icon.png" },
   alternates: { canonical: SITE_URL },
@@ -83,12 +68,16 @@ const organizationSchema = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${barlow.variable} ${barlowCondensed.variable}`}>
-      <body>
+    <html lang="es">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+      </head>
+      <body style={{ fontFamily: "'Barlow', system-ui, sans-serif", margin: 0 }}>
         {children}
         <Analytics />
       </body>

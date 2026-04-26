@@ -55,7 +55,7 @@ export function Header() {
             className="rounded-lg transition-transform duration-300 group-hover:scale-105"
             priority
           />
-          <span style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", fontSize: "24px", fontWeight: 900, letterSpacing: "-0.02em" }}>
+          <span style={{ fontFamily: "'Barlow Condensed', sans-serif", color: "#FFFFFF", fontSize: "24px", fontWeight: 900, letterSpacing: "-0.02em" }}>
             MAKLEO
           </span>
         </a>
@@ -114,7 +114,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              style={{ color: "#a0b4c8", fontFamily: "var(--font-heading)", fontSize: "18px", fontWeight: 500 }}
+              style={{ color: "#a0b4c8", fontFamily: "'Barlow Condensed', sans-serif", fontSize: "18px", fontWeight: 500 }}
             >
               {link.label}
             </a>

@@ -11,10 +11,10 @@ export default function NotFound() {
         <Header />
         <main id="main-content" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div style={{ textAlign: "center", padding: "0 24px" }}>
-            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 900, fontSize: "clamp(120px, 20vw, 220px)", lineHeight: 1, letterSpacing: "-0.05em", color: "rgba(255,255,255,0.04)", userSelect: "none", marginBottom: "-20px" }}>
+            <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900, fontSize: "clamp(120px, 20vw, 220px)", lineHeight: 1, letterSpacing: "-0.05em", color: "rgba(255,255,255,0.04)", userSelect: "none", marginBottom: "-20px" }}>
               404
             </div>
-            <div style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "clamp(28px, 5vw, 44px)", color: "#FFFFFF", letterSpacing: "-0.02em", marginBottom: "12px" }}>
+            <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "clamp(28px, 5vw, 44px)", color: "#FFFFFF", letterSpacing: "-0.02em", marginBottom: "12px" }}>
               PÁGINA NO ENCONTRADA
             </div>
             <p style={{ color: "#a0b4c8", fontSize: "15px", maxWidth: "360px", margin: "0 auto 32px", lineHeight: 1.7 }}>

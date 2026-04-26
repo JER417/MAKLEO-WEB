@@ -77,7 +77,7 @@ export function B2BSection() {
             <p className="reveal mb-3" style={{ color: "#09C2AF", fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
               Soluciones B2B
             </p>
-            <h2 className="reveal delay-100" style={{ fontFamily: "var(--font-heading)", fontWeight: 800, fontSize: "clamp(40px, 6vw, 64px)", color: "#FFFFFF", lineHeight: 0.95, letterSpacing: "-0.02em" }}>
+            <h2 className="reveal delay-100" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800, fontSize: "clamp(40px, 6vw, 64px)", color: "#FFFFFF", lineHeight: 0.95, letterSpacing: "-0.02em" }}>
               SERVICIOS PARA<br />EMPRESAS Y CORPORATIVOS
             </h2>
           </div>
@@ -100,7 +100,7 @@ export function B2BSection() {
                       <Icon className="w-5 h-5" style={{ color: "#1151A7" }} />
                     </div>
                     <div>
-                      <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "17px", color: "#FFFFFF", marginBottom: "3px" }}>{b.title}</div>
+                      <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "17px", color: "#FFFFFF", marginBottom: "3px" }}>{b.title}</div>
                       <p style={{ color: "#a0b4c8", fontSize: "13px", lineHeight: 1.6 }}>{b.desc}</p>
                     </div>
                   </div>
@@ -108,7 +108,7 @@ export function B2BSection() {
               })}
 
               <div className="reveal p-6 rounded-2xl" style={{ background: "rgba(9,194,175,0.06)", border: "1px solid rgba(9,194,175,0.15)" }}>
-                <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "16px", color: "#FFFFFF", marginBottom: "10px" }}>
+                <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "16px", color: "#FFFFFF", marginBottom: "10px" }}>
                   +50 empresas en sectores como:
                 </div>
                 <div className="flex flex-wrap gap-2 mb-5">
@@ -140,7 +140,7 @@ export function B2BSection() {
             <div className="reveal reveal-right p-8 rounded-3xl"
               style={{ background: "#2c3d50", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 30px 60px rgba(0,0,0,0.3)" }}
             >
-              <div style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "26px", color: "#FFFFFF", marginBottom: "4px" }}>
+              <div style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "26px", color: "#FFFFFF", marginBottom: "4px" }}>
                 Solicita una cotización
               </div>
               <p style={{ color: "#a0b4c8", fontSize: "13px", marginBottom: "24px" }}>Respuesta en menos de 24 horas.</p>
@@ -268,7 +268,7 @@ export function B2BSection() {
                     color: "#fff",
                     cursor: isSubmitting || !privacy ? "not-allowed" : "pointer",
                     boxShadow: !isSubmitting && privacy ? "0 0 25px rgba(17,81,167,0.4)" : "none",
-                    fontFamily: "var(--font-heading)",
+                    fontFamily: "'Barlow Condensed', sans-serif",
                     fontSize: "16px",
                     letterSpacing: "0.05em",
                   }}
