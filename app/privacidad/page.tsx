@@ -198,7 +198,7 @@ export default function PrivacidadPage() {
   return (
     <div style={{ minHeight: "100vh", background: "#1b2738", color: "#FFFFFF" }}>
       <Header />
-      <main style={{ paddingTop: "120px", paddingBottom: "96px" }}>
+      <main id="main-content" style={{ paddingTop: "120px", paddingBottom: "96px" }}>
         <div className="container mx-auto px-6" style={{ maxWidth: "760px" }}>
 
           <div style={{ marginBottom: "64px" }}>

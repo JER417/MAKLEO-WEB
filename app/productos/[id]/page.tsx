@@ -2,8 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { products, getProductById } from "@/lib/products"
 import { ProductDetailClient } from "@/components/product-detail-client"
-
-const siteUrl = "https://www.makleo.com.mx"
+import { SITE_URL } from "@/lib/constants"
 
 export function generateStaticParams() {
   return products.map((product) => ({ id: product.id }))
@@ -20,9 +19,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   return {
     title,
     description,
-    openGraph: { title, description, url: `${siteUrl}/productos/${id}`, images: [{ url: product.image, alt: product.name }] },
+    openGraph: { title, description, url: `${SITE_URL}/productos/${id}`, images: [{ url: product.image, alt: product.name }] },
     twitter: { card: "summary_large_image", title, description, images: [product.image] },
-    alternates: { canonical: `${siteUrl}/productos/${id}` },
+    alternates: { canonical: `${SITE_URL}/productos/${id}` },
   }
 }
 
@@ -36,12 +35,12 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     "@type": "Product",
     name: product.name,
     description: product.detailedDescription,
-    image: `${siteUrl}${product.image}`,
+    image: `${SITE_URL}${product.image}`,
     brand: { "@type": "Brand", name: "MAKLEO" },
-    manufacturer: { "@type": "Organization", name: "MAKLEO", url: siteUrl },
+    manufacturer: { "@type": "Organization", name: "MAKLEO", url: SITE_URL },
     category: "Equipo de Protección Personal — Protección Ocular",
     additionalProperty: product.certifications.map((cert) => ({ "@type": "PropertyValue", name: "Certificación", value: cert })),
-    offers: { "@type": "Offer", seller: { "@type": "Organization", name: "MAKLEO" }, availability: "https://schema.org/InStock", areaServed: "MX", url: `${siteUrl}/productos/${id}` },
+    offers: { "@type": "Offer", seller: { "@type": "Organization", name: "MAKLEO" }, availability: "https://schema.org/InStock", areaServed: "MX", url: `${SITE_URL}/productos/${id}` },
   }
 
   return (

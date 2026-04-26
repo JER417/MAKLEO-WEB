@@ -2,20 +2,30 @@
 
 import { MessageCircle } from "lucide-react"
 import { useState, useEffect } from "react"
+import { WHATSAPP_BASE_URL } from "@/lib/constants"
+
+const WHATSAPP_MSG = encodeURIComponent("Hola, me interesa cotizar lentes de seguridad industrial.")
 
 export function WhatsappButton() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400)
-    window.addEventListener("scroll", onScroll)
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        setVisible(window.scrollY > 400)
+        ticking = false
+      })
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   return (
-    
     <a
-      href="https://wa.me/528113780983?text=Hola%2C%20me%20interesa%20cotizar%20lentes%20de%20seguridad%20industrial."
+      href={`${WHATSAPP_BASE_URL}?text=${WHATSAPP_MSG}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"

@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -21,6 +19,10 @@
   --border:     rgba(255,255,255,0.07);
   --border-mid: rgba(255,255,255,0.12);
 
+  /* Font families (populated by next/font variables on <html>) */
+  --font-body:    var(--font-barlow, system-ui), sans-serif;
+  --font-heading: var(--font-barlow-condensed, system-ui), sans-serif;
+
   --background: #1b2738;
   --foreground: #FFFFFF;
   --card: #334052;
@@ -35,9 +37,8 @@
   --muted-foreground: #a0b4c8;
   --accent: #09C2AF;
   --accent-foreground: #ffffff;
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: rgba(255,255,255,0.07);
+  --destructive: #c0392b;
+  --destructive-foreground: #ffffff;
   --input: #2c3d50;
   --ring: #1151A7;
   --radius: 0.5rem;
@@ -66,21 +67,34 @@
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 4px);
-  --font-sans: 'Barlow', system-ui, sans-serif;
-  --font-display: 'Barlow Condensed', system-ui, sans-serif;
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
 }
 
 @layer base {
   * { @apply border-border; }
   body {
-    background-color: #1b2738;
+    background-color: var(--bg-deep);
     color: #FFFFFF;
-    font-family: 'Barlow', system-ui, sans-serif;
+    font-family: var(--font-body);
+    margin: 0;
   }
   html { scroll-behavior: smooth; }
   h1, h2, h3, h4 {
-    font-family: 'Barlow Condensed', system-ui, sans-serif;
+    font-family: var(--font-heading);
   }
+}
+
+input, textarea, select {
+  background-color: #2c3d50;
+  border-color: rgba(255,255,255,0.1);
+  color: #FFFFFF;
+}
+input::placeholder, textarea::placeholder { color: #6b849c; }
+input:focus, textarea:focus {
+  border-color: #1151A7;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(17,81,167,0.2);
 }
 
 .reveal {
@@ -113,14 +127,15 @@
   border-radius: 2px;
 }
 
-input, textarea, select {
-  background-color: #2c3d50 !important;
-  border-color: rgba(255,255,255,0.1) !important;
-  color: #FFFFFF !important;
-}
-input::placeholder, textarea::placeholder { color: #6b849c !important; }
-input:focus, textarea:focus {
-  border-color: #1151A7 !important;
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(17,81,167,0.2) !important;
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
