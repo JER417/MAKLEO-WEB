@@ -12,7 +12,7 @@ const benefits = [
   { icon: Building2,  title: "Solución profesional", desc: "Asesoría técnica y documentación de cumplimiento NOM-017-STPS-2024." },
 ]
 
-const EMPTY_FORM = { companyName: "", contactName: "", email: "", phone: "", volume: "", message: "" }
+const EMPTY_FORM = { companyName: "", contactName: "", email: "", phone: "", volume: "", message: "", _trap: "" }
 
 export function B2BSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -27,11 +27,18 @@ export function B2BSection() {
     setIsSubmitting(true)
     setError(null)
 
+    const { _trap, ...emailData } = formData
+    if (_trap) {
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+      return
+    }
+
     const serviceId  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID  ?? ""
     const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? ""
     const publicKey  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY  ?? ""
 
-    emailjs.send(serviceId, templateId, formData, publicKey)
+    emailjs.send(serviceId, templateId, emailData, publicKey)
       .then(() => {
         setIsSubmitting(false)
         setIsSubmitted(true)
@@ -218,6 +225,18 @@ export function B2BSection() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     onFocus={(e) => (e.target.style.borderColor = "#1151A7")}
                     onBlur={(e) => (e.target.style.borderColor = "rgba(255,255,255,0.1)")}
+                  />
+                </div>
+
+                {/* Honeypot — invisible para humanos, trampa para bots */}
+                <div style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none" }} aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website"
+                    value={formData._trap}
+                    onChange={(e) => setFormData({ ...formData, _trap: e.target.value })}
+                    autoComplete="off"
+                    tabIndex={-1}
                   />
                 </div>
 
